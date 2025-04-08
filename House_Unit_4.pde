@@ -14,11 +14,17 @@ void setup() {
 
 void draw() {
   house(0, 0);
+  house(0, 200);
+  house(0, 400);
+  house(200, 0);
+  house(400, 0);
+  house(600, 0);
 }
 
 void house(int x, int y) {
   pushMatrix();
   translate(x, y);
+  scale(0.25);
   
  chimney();
  roof(100, 300);
