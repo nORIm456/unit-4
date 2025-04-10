@@ -1,3 +1,4 @@
+//Global Variables
 color blue = #5FAAEA;
 color white = #FFFFFF;
 color red = #E33232;
@@ -8,23 +9,18 @@ color yellow = #EDDD26;
 
 
 void setup() {
-  background(blue);
   size(800, 600);
 }
 
 void draw() {
-  house(0, 0);
-  house(0, 200);
-  house(0, 400);
-  house(200, 0);
-  house(400, 0);
-  house(600, 0);
+  background(blue);
+  house(random(100, 500), random(100, 500), random(0.25,1));
 }
 
-void house(int x, int y) {
+void house(float x, float y, float s) {
   pushMatrix();
   translate(x, y);
-  scale(0.25);
+  scale(s);
   
  chimney();
  roof(100, 300);
