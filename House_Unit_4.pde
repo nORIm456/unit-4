@@ -6,29 +6,33 @@ color darkred = #AF2323;
 color darkblue = #98DAF0; 
 color brown = #763F07;
 color yellow = #EDDD26;
+int x = 0;
 
 
 void setup() {
   size(800, 600);
+  background(blue);
+  //house(random(100, 500), random(100, 500), random(0.25,1));
+  while(x <= 600) {
+  house(x, 25, 0.25);
+  house(x, 225, 0.25);
+  house(x, 425, 0.25);
+    x = x + 200;
+  }
 }
 
-void draw() {
-  background(blue);
-  house(random(100, 500), random(100, 500), random(0.25,1));
-}
 
 void house(float x, float y, float s) {
   pushMatrix();
   translate(x, y);
   scale(s);
   
- chimney();
- roof(100, 300);
- building();
- window();
- door();
- knob();
-
+  chimney();
+  roof(100, 300);
+  building();
+  window();
+  door();
+  knob();
   popMatrix();
 }
 
@@ -55,8 +59,8 @@ void roof(int x, int y) {
   }
   
  void door() {
-  fill(brown);
-  stroke(brown);
+  fill(random(0, 225));
+  stroke(random(0, 225));
   rect(270, 400, 120, 300);
  }
  
