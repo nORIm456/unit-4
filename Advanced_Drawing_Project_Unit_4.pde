@@ -8,6 +8,7 @@ color lightblue = #51BACE;
 color grey = #949EA0;
 color darkgrey = #858C8E;
 int y = 0;
+int i = 0;
 
 void setup() {
   background(black);
@@ -21,10 +22,10 @@ line(0, y, 800, y);
  y = y + 1;
  }
  planet(300, 800);
- asteroid(300, 300);
- spaceship(600, 300);
+ asteroid(int(random(200, 600)), 300);
+ spaceship(int(random(200,600)), 300);
  stars(400, 300);
- spaceship(600, 400);
+ spaceship(int(random(200,600)), 400);
 }
 
 
@@ -35,13 +36,23 @@ void planet(int x, int y) {
 }
 
 void asteroid(int x, int y) {
+  pushMatrix();
   fill(rock);
   stroke(rock);
   ellipse(x, y, 200, 100);
   ellipse(x+30, x+30, 150, 100);
-  fill(darkrock);
-  stroke(darkrock);
-  circle(x-10, y, 25);
+  crater();
+  popMatrix();
+}
+
+void crater (int x, int y) {
+  int i = 0;
+  while( i <= 5) {
+    fill(darkrock);
+    stroke(darkrock);
+    circle(x-10, y, 25);
+  i = i + 1;
+  }
 }
 
 void spaceship(int x, int y) {
