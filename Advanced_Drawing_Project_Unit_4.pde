@@ -24,7 +24,7 @@ line(0, y, 800, y);
  planet(300, 800);
  asteroid(int(random(200, 600)), 300);
  spaceship(int(random(200,600)), 300);
- stars(400, 300);
+ stars(int(random(400, 300)), 300);
  spaceship(int(random(200,600)), 400);
 }
 
@@ -37,37 +37,53 @@ void planet(int x, int y) {
 
 void asteroid(int x, int y) {
   pushMatrix();
+  
   fill(rock);
   stroke(rock);
   ellipse(x, y, 200, 100);
-  ellipse(x+30, x+30, 150, 100);
-  crater();
+  ellipse(x+30, y+30, 150, 100);
+  
+  divet();
   popMatrix();
 }
 
-void crater (int x, int y) {
-  int i = 0;
-  while( i <= 5) {
+ void divet () {
+  int i = 200;
+  while( i <= 0) {
     fill(darkrock);
     stroke(darkrock);
-    circle(x-10, y, 25);
-  i = i + 1;
-  }
+    circle(i, 600, 25);
+    i = i - 50;
+   }
 }
 
 void spaceship(int x, int y) {
+  pushMatrix();
+  
   fill(lightblue);
   stroke(lightblue);
   circle(x, y-20, 80);
   fill(grey);
   stroke(grey);
   ellipse(x, y, 200, 50);
-  fill(darkgrey);
-  stroke(darkgrey);
-  circle(x, y, 15);
-  circle(x-50, y, 15);
-  circle(x+50, y, 15);
+  //fill(darkgrey);
+  //stroke(darkgrey);
+  //circle(x, y, 15);
+  //circle(x-50, y, 15);
+  //circle(x+50, y, 15);
+  
+  spots();
+  popMatrix();
 }
+  void spots() {
+    int t = 200;
+    while(t >= 0) {
+      fill(darkgrey);
+      stroke(darkgrey);
+      ellipse(t, 600, 15, 15);
+      t = t - 50;
+  }
+  }
 void stars(int x, int y) {
   fill(white);
   stroke(white);
