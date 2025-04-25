@@ -22,10 +22,11 @@ line(0, y, 800, y);
  y = y + 1;
  }
  planet(300, 800);
- asteroid(int(random(200, 600)), 300);
- spaceship(int(random(200,600)), 300);
+ asteroid(int(random(0, 600)), 500, 0.65);
+ spaceship(int(random(0, 600)), 100, 0.50);
  stars(int(random(400, 300)), 300);
- spaceship(int(random(200,600)), 400);
+ spaceship(int(random(0,600)), 250, 0.50);
+ spaceship(int(random(0,600)), 350, 0.50);
 }
 
 
@@ -35,54 +36,68 @@ void planet(int x, int y) {
   ellipse(400, 600, 1000, 400);
 }
 
-void asteroid(int x, int y) {
+void asteroid(int x, int y, float s) {
   pushMatrix();
+  translate(x, y);
+  rotate(PI/4);
+  scale(s);
   
-  fill(rock);
-  stroke(rock);
-  ellipse(x, y, 200, 100);
-  ellipse(x+30, y+30, 150, 100);
-  
+
+  body1();
+  //body2();
   divet();
   popMatrix();
 }
-
+ void body1() {
+  fill(rock);
+  stroke(rock);
+  ellipse(0, 0, 250, 180);
+ }
+ //void body2() {
+  //fill(rock);
+  //stroke(rock);
+  //ellipse(30, 30, 150, 100);
+ //}
  void divet () {
-  int i = 200;
-  while( i <= 0) {
+  int i = 50;
+  while(i >= 0) {
     fill(darkrock);
     stroke(darkrock);
-    circle(i, 600, 25);
+    //ellipse(i-40, -30, 35, 35);
+    ellipse(i-20, 40, 25, 25);
     i = i - 50;
    }
+   
 }
 
-void spaceship(int x, int y) {
+void spaceship(int x, int y, float s) {
   pushMatrix();
+  translate(x, y);
+  scale(s);
   
-  fill(lightblue);
-  stroke(lightblue);
-  circle(x, y-20, 80);
-  fill(grey);
-  stroke(grey);
-  ellipse(x, y, 200, 50);
-  //fill(darkgrey);
-  //stroke(darkgrey);
-  //circle(x, y, 15);
-  //circle(x-50, y, 15);
-  //circle(x+50, y, 15);
-  
+  cockpit();
+  ssbody();
   spots();
   popMatrix();
 }
   void spots() {
-    int t = 200;
+    int t = 100;
     while(t >= 0) {
       fill(darkgrey);
       stroke(darkgrey);
-      ellipse(t, 600, 15, 15);
+      ellipse(t-50, 5, 15, 15);
       t = t - 50;
   }
+  }
+  void ssbody() {
+  fill(grey);
+  stroke(grey);
+  ellipse(0, 0, 200, 50);
+  }
+  void cockpit() {
+  fill(lightblue);
+  stroke(lightblue);
+  circle(0, -20, 80);
   }
 void stars(int x, int y) {
   fill(white);
